@@ -10,8 +10,9 @@
         const selectedItem = localStorage.getItem('selectedItem');
         const selectedItemImageSrc = localStorage.getItem('selectedItemImageSrc');
         
-        function createList(items) {
+        function createList(items, stepItems) {
             const ul = document.createElement('ul');
+            const ul_1 = document.createElement('ul');
 
             items.forEach(item => {
                 const li = document.createElement('li');
@@ -19,9 +20,18 @@
                 ul.appendChild(li);
             });
 
-            const listContainer = document.getElementById('listContainer')
+            stepItems.forEach(item =>{
+                const li = document.createElement('li');
+                // li.textContent = item;
+                li.innerHTML = item;
+                ul_1.appendChild(li);
+            });
+
+            const listContainer = document.getElementById('listContainer');
+            const stepListContainer = document.getElementById('stepListContainer');
             // listContainer.innerHTML = '';
             listContainer.appendChild(ul);
+            stepListContainer.appendChild(ul_1);
         }
 
         
@@ -100,6 +110,15 @@
         #listContainer ul {
             margin-top: 15px;
         }
+
+        #stepListContainer h2{
+            padding-left: 30px;
+            margin-bottom: 0px;
+        }
+
+        #stepListContainer ul {
+            margin-top: 15px;
+        }
         
     </style>
 </head>
@@ -120,24 +139,38 @@
     </div>
 
     <div id="listContainer">
-        <h2>Health Benefit : </h2>
+        <h2>Manfaat Kesehatan : </h2>
+    </div>
+
+    <div id="stepListContainer">
+        <h2>Cara Penyeduhan : </h2>
     </div>
 
     <script>
 
         if (selectedItem === 'French Earl Grey') {
             const frenchEarlGreyList = [
-                'good for your health',
-                'not that expensive',
-                'is gray'
+                'meredakan gejala maagh & gerd',
+                'meningkatkan daya tahan tubuh',
+                'melawan radikal bebas',
+                'mengurangi stress'
+
             ];
-            createList(frenchEarlGreyList);
+            const frenchEarlGreyStepList = [
+                'Masukan 1 sdt racikan teh',
+                'Larutkan dalam 150 ml<br>air panas (80°C)',
+                'Seduh teh selama 3 menit'
+            ]
+            createList(frenchEarlGreyList, frenchEarlGreyStepList);
         } else if (selectedItem === 'Crimson Berry') {
             const crimsonBerryList = [
                 'is red',
                 'is berry'
             ];
-            createList(crimsonBerryList);
+            const crimsonBerryStepList = [
+
+            ]
+            createList(crimsonBerryList, crimsonBerryStepList);
         }
 
         const itemHeading = document.getElementById('itemHeading');
