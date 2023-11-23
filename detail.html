@@ -10,9 +10,10 @@
         const selectedItem = localStorage.getItem('selectedItem');
         const selectedItemImageSrc = localStorage.getItem('selectedItemImageSrc');
         
-        function createList(items, stepItems) {
+        function createList(items, stepItems, compositionList) {
             const ul = document.createElement('ul');
             const ul_1 = document.createElement('ul');
+            const ul_2 = document.createElement('ul');
 
             items.forEach(item => {
                 const li = document.createElement('li');
@@ -27,11 +28,19 @@
                 ul_1.appendChild(li);
             });
 
+            compositionList.forEach(item=>{
+                const li = document.createElement('li');
+                li.textContent = item;
+                ul_2.appendChild(li);
+            });
+
             const listContainer = document.getElementById('listContainer');
             const stepListContainer = document.getElementById('stepListContainer');
+            const compositionListContainer = document.getElementById('compositionListContainer');
             // listContainer.innerHTML = '';
             listContainer.appendChild(ul);
             stepListContainer.appendChild(ul_1);
+            compositionListContainer.appendChild(ul_2);
         }
 
         
@@ -119,6 +128,15 @@
         #stepListContainer ul {
             margin-top: 15px;
         }
+
+        #compositionListContainer h2{
+            padding-left: 30px;
+            margin-bottom: 0px;
+        }
+
+        #compositionListContainer ul {
+            margin-top: 15px;
+        }
         
     </style>
 </head>
@@ -146,31 +164,193 @@
         <h2>Cara Penyeduhan : </h2>
     </div>
 
+    <div id="compositionListContainer">
+        <h2>Komposisi : </h2>
+    </div>
+
     <script>
 
         if (selectedItem === 'French Earl Grey') {
             const frenchEarlGreyList = [
-                'meredakan gejala maagh & gerd',
-                'meningkatkan daya tahan tubuh',
-                'melawan radikal bebas',
-                'mengurangi stress'
+                'Kaya akan antioksidan',
+                'Membantu pencernaan',
+                'Anti inflamasi',
+                'Menjaga berat badan'
 
             ];
             const frenchEarlGreyStepList = [
                 'Masukan 1 sdt racikan teh',
-                'Larutkan dalam 150 ml<br>air panas (80°C)',
+                'Tambahkan 150 ml air panas (90°C - 96°C)',
+                'Seduh teh selama 3 - 5 menit'
+            ]
+            const compositionList = [
+                'Black tea',
+                'Rose petals',
+                'Natural bergamot Oil',
+            ]
+            createList(frenchEarlGreyList, frenchEarlGreyStepList, compositionList);
+        } else if (selectedItem === 'Cozy Comfort') {
+            const cozyComfortList = [
+                'Meredakan stress',
+                'Meredakan nyeri saat PMS',
+                'Meredakan sakit kepala',
+                'Meredakan mual'
+            ];
+            const cozyComfortStepList = [
+                'Masukan 1 sdt racikan teh',
+                'Tambahkan 200 ml air panas (100°C)',
+                'Seduh teh selama 5 menit'
+            ]
+            const compositionList = [
+                'Lemongrass',
+                'Ginger',
+                'Butterfly pea flower',
+            ]
+            createList(cozyComfortList, cozyComfortStepList, compositionList);
+        }
+        else if (selectedItem === 'Bye - bye Gerd') {
+            const byeByeGerdList = [
+                'Meredakan gejala maagh & gerd',
+                'Meningkatkan daya tahan tubuh',
+                'Melawan radikal bebas',
+                'Mengurangi stress dan cemas'
+            ];
+            const byeByeGerdStepList = [
+                'Masukan 1 sdt racikan teh',
+                'Tambahkan 150 ml air panas (80°C)',
                 'Seduh teh selama 3 menit'
             ]
-            createList(frenchEarlGreyList, frenchEarlGreyStepList);
-        } else if (selectedItem === 'Crimson Berry') {
-            const crimsonBerryList = [
-                'is red',
-                'is berry'
-            ];
-            const crimsonBerryStepList = [
-
+            const compositionList = [
+                'White tea',
+                'Turmeric',
+                'Lemongrass',
+                'Chamomile',
+                'Myosotis petals',
             ]
-            createList(crimsonBerryList, crimsonBerryStepList);
+            createList(byeByeGerdList, byeByeGerdStepList, compositionList);
+        }
+        else if (selectedItem === 'Sereminty') {
+            const list = [
+                'Meningkatkan kualitas tidur',
+                'Meredakan flu dan batuk',
+                'Meringankan gangguan pencernaan',
+                'Meredakan flu dan batuk',
+                'Mengurangi stress dan cemas',
+            ];
+            const stepList = [
+                'Masukan 1 sdt racikan teh',
+                'Tambahkan 200 ml air panas (100°C)',
+                'Seduh teh selama 5 menit'
+            ]
+            const compositionList = [
+                'Crushed chamomile flower',
+                'Crushed peppermint leaves'
+            ]
+            createList(list, stepList, compositionList);
+        }
+        else if (selectedItem === 'Sweet Dream') {
+            const list = [
+                'Menangkal radikal bebas',
+                'Memperbaiki kualitas tidur',
+                'Meningkatkan mood',
+            ];
+            const stepList = [
+                'Masukan 1 sdt racikan teh',
+                'Tambahkan 150 ml air panas (90°C - 95°C)',
+                'Seduh teh selama 3 - 5 menit'
+            ]
+            const compositionList = [
+                'Rooibos',
+                'Lavender',
+                'Dried blueberry',
+                'Marigold petal',
+                'Chamomile powder',
+            ]
+            createList(list, stepList, compositionList);
+        }
+        else if (selectedItem === 'Ginger Zest') {
+            const list = [
+                'Menangkal radikal bebas',
+                'Memperbaiki kualitas tidur',
+                'Meningkatkan mood',
+            ];
+            const stepList = [
+                'Masukan 1 sdt racikan teh',
+                'Tambahkan 150 ml air panas (85°C - 90°C)',
+                'Seduh teh selama 5 menit'
+            ]
+            const compositionList = [
+                'Black tea',
+                'Lemongrass',
+                'Ginger',
+            ]
+            createList(list, stepList, compositionList);
+        }
+        else if (selectedItem === 'Berry Burst') {
+            const list = [
+                'Menambah kewaspadaan dan energi',
+                'Menambah energi',
+                'Melancarkan pencernaan',
+                'Melawan radikal bebas',
+                'Sumber antioksidan',
+            ];
+            const stepList = [
+                'Masukan 1 sdt racikan teh',
+                'Tambahkan 150 ml air panas (90°C - 95°C)',
+                'Seduh teh selama 3 - 5 menit'
+            ]
+            const compositionList = [
+                'Black tea',
+                'Hibiscus',
+                'Cranberries',
+                'Orange peel',
+                'Apple',
+                'Natural flavor',
+            ]
+            createList(list, stepList, compositionList);
+        }
+        else if (selectedItem === 'Cacao Delight') {
+            const list = [
+                'Meningkatkan mood',
+                'Mengurangi stress',
+                'Menurunkan tekanan darah',
+                'Baik bagi kesehatan pencernaan',
+            ];
+            const stepList = [
+                'Masukan 1 sdt racikan teh',
+                'Tambahkan 150 ml air panas (90°C)',
+                'Seduh teh selama 5 menit'
+            ]
+            const compositionList = [
+                'Black tea',
+                'Cacao husk',
+                'Dried apple',
+                'Osmanthus',
+                'Peppermint',
+                'Blue cornflower',
+            ]
+            createList(list, stepList, compositionList);
+        }
+        else if (selectedItem === 'Tropical Green') {
+            const list = [
+                'Meningkatkan mood',
+                'Menghilangkan bau mulut',
+                'Sumber antioksidan',
+                'Baik bagi kesehatan pencernaan',
+            ];
+            const stepList = [
+                'Masukan 1 sdt racikan teh',
+                'Tambahkan 200 ml air panas (80°C)',
+                'Seduh teh selama 2 - 3 menit'
+            ]
+            const compositionList = [
+                'Steamed green tea',
+                'Dried pinapple',
+                'Dried mango',
+                'Natural Flavor',
+                'Calendula petals',
+            ]
+            createList(list, stepList, compositionList);
         }
 
         const itemHeading = document.getElementById('itemHeading');
