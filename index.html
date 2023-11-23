@@ -23,6 +23,9 @@
 
             // Add the 'active' class to the clicked menu item
             item.classList.add('active');
+
+            const itemName = item.querySelector('p').textContent;
+            localStorage.setItem('selectedItem', itemName);
         }
 
      </script>
@@ -93,6 +96,23 @@
             min-width: 120px;
             transition: background-color 0.3s ease, opacity 0.3s ease; /* Add transition for smoother effect */
             -webkit-tap-highlight-color: transparent;
+        }
+
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(248, 248, 174, 0.5); /* Semi-transparent color */
+            pointer-events: none; /* Allow clicks to pass through this overlay */
+            opacity: 0; /* Initially transparent */
+            transition: opacity 0.3s ease; /* Add transition for smooth effect */
+        }
+
+        .menu-item:active::after {
+            opacity: 1; /* Make the overlay visible on active/clicked state */
         }
 
         .menu-item:visited{
@@ -173,7 +193,7 @@
     </div>
 
     <div class="menu-container">
-        <a href="" class="menu-item" onclick="handleItemClick(this)" >
+        <a href="./detail.html" class="menu-item" onclick="handleItemClick(this)" >
             <img src="./images/logo.png" alt="logo image">
             <p>French Earl Grey</p>
         </a>
