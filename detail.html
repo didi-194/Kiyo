@@ -9,7 +9,22 @@
     <script>
         const selectedItem = localStorage.getItem('selectedItem');
         const selectedItemImageSrc = localStorage.getItem('selectedItemImageSrc');
-        console.log(selectedItemImageSrc)
+        
+        function createList(items) {
+            const ul = document.createElement('ul');
+
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                ul.appendChild(li);
+            });
+
+            const listContainer = document.getElementById('listContainer')
+            // listContainer.innerHTML = '';
+            listContainer.appendChild(ul);
+        }
+
+        
     </script>
     <style>
         @font-face {
@@ -21,6 +36,12 @@
             font-family: 'Dunkin';
         }
         p {
+            font-family: 'Dunkin';
+        }
+        li {
+            font-family: 'Dunkin';
+        }
+        h2 {
             font-family: 'Dunkin';
         }
 
@@ -70,6 +91,16 @@
         .heading h1 {
             font-size: x-large;
         }
+
+        #listContainer h2{
+            padding-left: 30px;
+            margin-bottom: 0px;
+        }
+
+        #listContainer ul {
+            margin-top: 15px;
+        }
+        
     </style>
 </head>
 <body>
@@ -84,17 +115,37 @@
     <div class="heading">
         <img id="itemImage" src="" alt="Selected Item Image">
         <h1 id="itemHeading">
-            This is ok
+            Item Name Placeholder
         </h1>
     </div>
 
+    <div id="listContainer">
+        <h2>Health Benefit : </h2>
+    </div>
 
     <script>
+
+        if (selectedItem === 'French Earl Grey') {
+            const frenchEarlGreyList = [
+                'good for your health',
+                'not that expensive',
+                'is gray'
+            ];
+            createList(frenchEarlGreyList);
+        } else if (selectedItem === 'Crimson Berry') {
+            const crimsonBerryList = [
+                'is red',
+                'is berry'
+            ];
+            createList(crimsonBerryList);
+        }
+
         const itemHeading = document.getElementById('itemHeading');
         itemHeading.textContent = selectedItem;
 
         const itemImage = document.getElementById('itemImage');
         itemImage.src = selectedItemImageSrc;
+
     </script>
 </body>
 </html>
