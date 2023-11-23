@@ -6,18 +6,24 @@
     <title>Detail</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    
+    <script>
+        const selectedItem = localStorage.getItem('selectedItem');
+        const selectedItemImageSrc = localStorage.getItem('selectedItemImageSrc');
+        console.log(selectedItemImageSrc)
+    </script>
 </head>
 <body>
+    <img id="itemImage" src="" alt="Selected Item Image">
     <h1 id="itemHeading">
         This is ok
     </h1>
 
     <script>
-        const selectedItem = localStorage.getItem('selectedItem');
-
         const itemHeading = document.getElementById('itemHeading');
         itemHeading.textContent = selectedItem;
+
+        const itemImage = document.getElementById('itemImage');
+        itemImage.src = selectedItemImageSrc;
     </script>
 </body>
 </html>
