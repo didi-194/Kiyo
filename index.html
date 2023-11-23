@@ -10,6 +10,18 @@
 
     <style>
 
+        @font-face {
+            font-family: 'Dunkin';
+            src: url(./fonts/Dunkin.otf) format('OpenType'); 
+        }
+
+        h1 {
+            font-family: 'Dunkin';
+        }
+        p {
+            font-family: 'Dunkin';
+        }
+
         body {
             margin: 0;
             background: #F5F5DC;
@@ -63,6 +75,41 @@
             
         }
 
+        .menu-item-inactive {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            min-width: 120px;
+            position: relative; /* Set position to relative for absolute positioning */
+            filter: grayscale(100%);
+            pointer-events: none; /* Disables pointer events */
+            opacity: 0.5; /* Optionally reduce opacity to visually indicate it's inactive */
+        }
+
+        .menu-item-inactive::before {
+            content: ''; 
+            background-image: url('./images/out-of-stock.png');
+            background-size: cover;
+            width: 100px; /* Adjust width as needed */
+            height: 100px; /* Adjust height as needed */
+            position: absolute; /* Position the image absolutely */
+            top: 50%; /* Position from the top */
+            left: 50%; /* Position from the left */
+            transform: translate(-50%, -50%); /* Center the image */
+        }
+
+       .menu-item-inactive p {
+        margin: 0;
+       }
+
+       .menu-item-inactive img {
+            margin: 10px;
+            width: 10vh;
+            
+        }
+
 
         
         
@@ -71,7 +118,7 @@
 <body>
 
     <div class="header">
-        <img src="./logo.png" alt="logo image">
+        <img src="./images/logo.png" alt="logo image">
         <div class="header-name">
             <h1>KIYO</h1>
             <p>a tea for your soul</p>
@@ -85,25 +132,12 @@
     <div class="menu-container">
 
         <div class="menu-item">
-            <img src="./logo.png" alt="logo image">
+            <img src="./images/logo.png" alt="logo image">
             <p>French Earl Grey</p>
         </div>
 
         <div class="menu-item">
-            <img src="./logo.png" alt="logo image">
-            <p>French Earl Grey</p>
-        </div>
-
-    </div>
-    <div class="menu-container">
-
-        <div class="menu-item">
-            <img src="./logo.png" alt="logo image">
-            <p>French Earl Grey</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="./logo.png" alt="logo image">
+            <img src="./images/logo.png" alt="logo image">
             <p>French Earl Grey</p>
         </div>
 
@@ -111,12 +145,12 @@
     <div class="menu-container">
 
         <div class="menu-item">
-            <img src="./logo.png" alt="logo image">
+            <img src="./images/logo.png" alt="logo image">
             <p>French Earl Grey</p>
         </div>
 
         <div class="menu-item">
-            <img src="./logo.png" alt="logo image">
+            <img src="./images/logo.png" alt="logo image">
             <p>French Earl Grey</p>
         </div>
 
@@ -124,21 +158,35 @@
     <div class="menu-container">
 
         <div class="menu-item">
-            <img src="./logo.png" alt="logo image">
+            <img src="./images/logo.png" alt="logo image">
             <p>French Earl Grey</p>
         </div>
 
         <div class="menu-item">
-            <img src="./logo.png" alt="logo image">
+            <img src="./images/logo.png" alt="logo image">
+            <p>French Earl Grey</p>
+        </div>
+
+    </div>
+    <div class="menu-container">
+
+        <div class="menu-item">
+            <img src="./images/logo.png" alt="logo image">
+            <p>French Earl Grey</p>
+        </div>
+
+        <div class="menu-item">
+            <img src="./images/logo.png" alt="logo image">
             <p>French Earl Grey</p>
         </div>
 
     </div>
     
+
     <div class="menu-container">
 
-        <div class="menu-item">
-            <img src="./logo.png" alt="logo image">
+        <div class="menu-item-inactive">
+            <img src="./images/logo.png" alt="logo image">
             <p>French Earl Grey</p>
         </div>
 
