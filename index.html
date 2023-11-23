@@ -15,6 +15,21 @@
             src: url(./fonts/Dunkin.otf) format('OpenType'); 
         }
 
+        @media (prefers-color-scheme: dark) {
+        /* Override specific styles for dark mode */
+        /* For example, reset background color to light */
+        body {
+            background-color: #ffffff; /* Set your preferred light background color */
+        }
+        
+        /* Reset text color to ensure readability */
+        /* You can adjust this to suit your design */
+        h1, p, .header-name p {
+            color: #000000; /* Set your preferred light text color */
+        }
+        }
+
+
         h1 {
             font-family: 'Dunkin';
         }
